@@ -36,4 +36,4 @@ def upload():
         raise SystemError("The server encountered an error saving the image. Perhaps it is out of space.")
     # TODO: image size checks?
 
-    return jsonify({"status": "success", "url": f"{current_app.config['STATIC_HOST']}/{name}"})
+    return jsonify({"status": "success", "url": os.path.join(current_app.config["STATIC_HOST"], name)})
