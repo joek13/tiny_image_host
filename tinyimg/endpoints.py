@@ -30,7 +30,10 @@ def upload():
         name = f"{identifier.generate_identifier()}.{extension}"
         path = os.path.join(upload_dir, name)
 
-    image.save(path) # save the image
+    try:
+        image.save(path) # save the image
+    except OSError:
+        raise SystemError("The server encountered an error saving the image. Perhaps it is out of space.")
     # TODO: image size checks?
 
     return jsonify({"status": "success", "url": f"{current_app.config['STATIC_HOST']}/{name}"})

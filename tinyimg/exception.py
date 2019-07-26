@@ -22,3 +22,6 @@ class MissingImage(ApiException):
 
 class ImageTypeNotAllowed(ApiException):
     status_code = 400
+
+class SystemError(ApiException):
+    status_code = 500
